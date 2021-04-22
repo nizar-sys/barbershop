@@ -1,15 +1,14 @@
 <?php
 session_start();
-require '../../backend/functions.php';
+require '../../../backend/functions.php';
 if (!$_SESSION['login']) {
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
     exit;
 }
 $username = $_SESSION['dataUser']['username'];
 $sql = "SELECT * FROM menu";
 $menus = query($sql);
-$sqlForData = "SELECT * FROM booking";
-$datasBooking = query($sqlForData);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +17,39 @@ $datasBooking = query($sqlForData);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../dist/styling/utils.css">
-    <link rel="stylesheet" href="../../dist/styling/templatesStyle/index.css">
+    <link rel="stylesheet" href="../../../dist/styling/utils.css">
+    <link rel="stylesheet" href="../../../dist/styling/templatesStyle/index.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
+        .table1 {
+            font-family: sans-serif;
+            color: #444;
+            border-collapse: collapse;
+            width: 50%;
+            border: 1px solid #f2f5f7;
+        }
+
+        .table1 tr th {
+            background: #35A9DB;
+            color: #fff;
+            font-weight: normal;
+        }
+
+        .table1,
+        th,
+        td {
+            padding: 8px 20px;
+            text-align: center;
+        }
+
+        .table1 tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .table1 tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
         .btn-warning {
             background-color: #e4e70f;
             border-color: #d4eb0b;
@@ -49,10 +77,10 @@ $datasBooking = query($sqlForData);
             <ul>
                 <li class="list">
                     <div class="float-right d-flex profile">
-                        <img src="../../dist/img/avatar-default.png" class="rounded-img">
+                        <img src="../../../dist/img/avatar-default.png" class="rounded-img">
                         <div>
                             <h3 class="font-white">Hi <?= $username; ?></h3>
-                            <a href="../logout.php" class="font-black">Logout</a>
+                            <a href="../../logout.php" class="font-black">Logout</a>
                         </div>
                     </div>
                 </li>
@@ -61,24 +89,32 @@ $datasBooking = query($sqlForData);
     </nav>
     <div id="main-sidebar">
         <div class="title-sidebar text-center">
-            <h3><a href="./index.php" class="font-black">My Barbershop</a></h3>
+            <h3><a href="../index.php" class="font-black">My Barbershop</a></h3>
         </div>
         <ul class="sidebar-menu">
             <?php foreach ($menus as $menu) : ?>
                 <li class="menu-header mt-2"><?= $menu['nama_menu']; ?></li>
-                <li class="sub-menu"><a href="menu/<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
+                <li class="sub-menu"><a href="<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
             <?php endforeach; ?>
         </ul>
     </div>
     <!-- END OF NAVIGATION -->
 
-    <!-- KONTEN -->
     <div class="main-content">
         <section class="section">
-            <h1>konten utama</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="title-data">
+                            <h2>Data pembooking</h2>
+                        </div>
+                        <a href="../aksi/cetak.php" class="btn btn-secondary font-black">Cetak</a>
+                        <?php require './dataBookingan.php'; ?>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
-    <!-- KONTEN END -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </body>

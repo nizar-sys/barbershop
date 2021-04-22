@@ -52,6 +52,20 @@ a {
   background-color: #007bff;
   border-color: #007bff;
 }
+.btn-secondary {
+  color: #fff;
+  background-color: #2fb84c;
+  border-color: #08f5ba;
+}
+.btn-warning {
+  color: #fff;
+  background-color: #e4e70f;
+  border-color: #d4eb0b;
+}
+.btn-danger {
+  background-color: #e73a0f;
+  border-color: #eb520b;
+}
 .btn:hover {
   background: inherit;
 }
@@ -78,5 +92,56 @@ a {
 }
 .font-black {
   color: black;
+}
+.font-orange {
+  color: orange;
+}
+.font-red {
+  color: red;
+}
+.font-size-1 {
+  font-size: 1em;
+}
+.font-size-2 {
+  font-size: 2em;
+}
+.font-size-3 {
+  font-size: 3em;
+}
+.font-size-4 {
+  font-size: 4em;
+}
+.font-size-5 {
+  font-size: 5em;
+}
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 /* ===UTILS=== */

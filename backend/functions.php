@@ -57,3 +57,18 @@ function flashmsg()
             </div>`;
     return $str;
 }
+
+
+// function tambahBooking($data)
+// {
+//     global $koneksi;
+//     $tanggal = strtolower($data['tanggal']);
+//     $jam = strtolower($data['jam']);
+//     $nama = strtolower($data['nama']);
+
+//     $query = "INSERT INTO booking VALUES('', '$nama', '$tanggal', '$jam', DEFAULT)";
+
+//     mysqli_query($koneksi, $query);
+
+//     return mysqli_affected_rows($koneksi);
+// }
