@@ -9,6 +9,14 @@ $username = $_SESSION['dataUser']['username'];
 $sql = "SELECT * FROM menu";
 $menus = query($sql);
 
+if (isset($_POST['updateStatus'])) {
+    $id = $_POST['id'];
+
+    $sqlStatusUpdate = "UPDATE booking SET status = 'selesai' WHERE booking_id = '$id'";
+    $result = mysqli_query($koneksi, $sqlStatusUpdate);
+    header('Location: ./laporan.php');
+    return $result;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,6 +125,7 @@ $menus = query($sql);
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

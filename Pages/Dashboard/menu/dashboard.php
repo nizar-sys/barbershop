@@ -20,6 +20,35 @@ $menus = query($sql);
     <link rel="stylesheet" href="../../../dist/styling/templatesStyle/index.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
+        .table1 {
+            font-family: sans-serif;
+            color: #444;
+            border-collapse: collapse;
+            width: 50%;
+            border: 1px solid #f2f5f7;
+        }
+
+        .table1 tr th {
+            background: #35A9DB;
+            color: #fff;
+            font-weight: normal;
+        }
+
+        .table1,
+        th,
+        td {
+            padding: 8px 20px;
+            text-align: center;
+        }
+
+        .table1 tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .table1 tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
         .btn-warning {
             background-color: #e4e70f;
             border-color: #d4eb0b;
@@ -72,11 +101,22 @@ $menus = query($sql);
 
     <div class="main-content">
         <section class="section">
-            <h1>dashboard</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="title-data">
+                            <h2>Data User</h2>
+                        </div>
+                        <a href="../aksi/cetakUser.php" class="btn btn-secondary font-black">Cetak</a>
+                        <?php require './dataUser.php'; ?>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

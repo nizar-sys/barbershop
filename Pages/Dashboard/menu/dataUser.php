@@ -5,36 +5,28 @@ $jmlHal = ceil($jmlData / $jmlDataPerHalaman);
 $halAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
 $awalData = ($jmlDataPerHalaman * $halAktif) - $jmlDataPerHalaman;
 
-$datasBooking = query("SELECT * FROM booking ORDER BY booking_id DESC LIMIT $awalData, $jmlDataPerHalaman");
+$datasUser = query("SELECT * FROM user ORDER BY uid DESC LIMIT $awalData, $jmlDataPerHalaman");
 ?>
 
 
 <table class="table1 mt-1">
     <tr>
         <th>No</th>
-        <th>Nama</th>
-        <th>Tanggal</th>
-        <th>Jam</th>
-        <th>Status</th>
+        <th>Fullname</th>
+        <th>Username</th>
+        <th>Role</th>
         <th>Aksi</th>
     </tr>
     <?php $i = 1; ?>
-    <?php foreach ($datasBooking as $bookingan) : ?>
+    <?php foreach ($datasUser as $user) : ?>
         <tr>
             <td><?= $i; ?></td>
-            <td><?= $bookingan['nama_pembooking']; ?></td>
-            <td><?= $bookingan['tanggal_booking']; ?></td>
-            <td><?= $bookingan['jam_booking']; ?></td>
-            <td><?= $bookingan['status']; ?></td>
-            <?php if ($bookingan['status'] == 'belum selesai') : ?>
-                <td class="d-flex">
-                    <form action="./laporan.php" method="POST">
-                        <input type="hidden" name="id" id="id" value="<?= $bookingan['booking_id']; ?>">
-
-                        <button class="btn btn-warning font-black" name="updateStatus">Selesaikan</button>
-                    </form>
-                </td>
-            <?php endif; ?>
+            <td><?= $user['fullname']; ?></td>
+            <td><?= $user['username']; ?></td>
+            <td><?= $user['role']; ?></td>
+            <td>
+                <a href="" class="btn btn-warning font-black">Edit</a> <a href="" class="btn btn-danger font-black">Hapus</a>
+            </td>
         </tr>
         <?php $i++; ?>
     <?php endforeach; ?>

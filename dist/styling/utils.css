@@ -144,4 +144,29 @@ a {
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.bg-primary {
+  background-color: #007bff;
+}
+.card {
+  box-shadow: 0 4px 8px rgb(0 0 0 / 3%);
+  background-color: #fff;
+  border-radius: 3px;
+  border: none;
+  position: relative;
+  margin-bottom: 30px;
+}
+.card-header {
+  padding-bottom: 0;
+  padding-top: 25px;
+}
+.card-icon {
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  border-radius: 3px;
+  line-height: 94px;
+  text-align: center;
+  float: left;
+  margin-right: 15px;
+}
 /* ===UTILS=== */
