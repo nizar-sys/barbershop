@@ -16,7 +16,12 @@ body {
 .card {
   width: 10rem;
   margin: 0 auto;
-  /* border: 1px solid black; */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 3%);
+  border-radius: 3px;
+  border: none;
+  position: relative;
+  margin-bottom: 30px;
+  background-color: inherit;
 }
 
 .card-img {

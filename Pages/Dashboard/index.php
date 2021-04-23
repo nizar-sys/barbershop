@@ -107,7 +107,7 @@ $jumlahBookingan = mysqli_num_rows($bookingan);
         <ul class="sidebar-menu">
             <?php foreach ($menus as $menu) : ?>
                 <li class="menu-header mt-2"><?= $menu['nama_menu']; ?></li>
-                <li class="sub-menu"><a href="menu/<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
+                <li class="sub-menu"><a href="<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
             <?php endforeach; ?>
         </ul>
     </div>

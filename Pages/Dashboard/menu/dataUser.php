@@ -25,7 +25,7 @@ $datasUser = query("SELECT * FROM user ORDER BY uid DESC LIMIT $awalData, $jmlDa
             <td><?= $user['username']; ?></td>
             <td><?= $user['role']; ?></td>
             <td>
-                <a href="" class="btn btn-warning font-black">Edit</a> <a href="" class="btn btn-danger font-black">Hapus</a>
+                <a href="../aksi/crud/user.php?id=<?= $user['uid']; ?>" class="btn btn-warning font-black">Edit</a> <a href="../aksi/crud/userDelete.php?id=<?= $user['uid']; ?>" onclick="return confirm('yakin ?')" class="btn btn-danger font-black">Hapus</a>
             </td>
         </tr>
         <?php $i++; ?>
