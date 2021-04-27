@@ -63,6 +63,73 @@ $menus = query($sql);
             background-color: #e73a0f;
             border-color: #eb520b;
         }
+        /* SIDEBAR STYLE */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            z-index: 880;
+            background-color: transparent;
+            color: white;
+            display: grid;
+            grid-template-rows: auto lfr auto;
+            row-gap: 1rem;
+            box-shadow: 0 4px 8px rgb(0 0 0 / 3%);
+            transition: all .3s;
+            transform: translate(-100%);
+        }
+
+        .show-sidebar {
+            transform: translate(0);
+        }
+        .menu-header {
+            padding: 3px 15px;
+            color: #bcc1c6;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            font-weight: 600;
+        }
+
+        .sub-menu a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            width: 100%;
+            letter-spacing: 0.3px;
+            color: black;
+            text-decoration: none;
+        }
+
+        @media screen and (min-width: 676px) {
+            .sidebar {
+                width: 250px;
+            }
+        }
+
+        @media only screen and (max-width: 680px) {
+            #navbar {
+                left: 0;
+                width: 65vh;
+            }
+            .title-menu{
+                margin-top: 4rem;
+                color: white;
+            }
+            .main-content {
+                padding-left: 40px;
+                width: 400px;
+            }
+            .sidebar{
+                background-color: #007bff;
+            }
+            .menu-header{
+                color: white;
+            }
+        }
     </style>
     <title>My Barbershop <?php if ($username == 'admin') {
                                 echo  '| Admin';
@@ -85,18 +152,22 @@ $menus = query($sql);
                 </li>
             </ul>
         </div>
+        <button type="button" class="sidebar-toggle btn mt-1">
+            <i class="fas fa-bars"></i>
+        </button>
     </nav>
-    <div id="main-sidebar">
-        <div class="title-sidebar text-center">
-            <h3><a href="../index.php" class="font-black">My Barbershop</a></h3>
-        </div>
+    <!-- SIDE BAR -->
+    <aside class="sidebar show-sidebar">
         <ul class="sidebar-menu">
-            <?php foreach ($menus as $menu) : ?>
-                <li class="menu-header mt-2"><?= $menu['nama_menu']; ?></li>
-                <li class="sub-menu"><a href="../<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
-            <?php endforeach; ?>
+            <h2 class="text-center title-menu"><a href="../index.php" class="font-black">My Barbershop</a></h2>
+            <div class="mt-2">
+                <?php foreach ($menus as $menu) : ?>
+                    <li class="menu-header"><?= $menu['nama_menu']; ?></li>
+                    <li class="sub-menu"><a href="../<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
+                <?php endforeach; ?>
+            </div>
         </ul>
-    </div>
+    </aside>
     <!-- END OF NAVIGATION -->
 
     <div class="main-content">
@@ -116,6 +187,20 @@ $menus = query($sql);
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const toggleBtn = document.querySelector('.sidebar-toggle');
+        const closeBtn = document.querySelector('.close-btn');
+        const sidebar = document.querySelector('.sidebar');
+        const navbar = document.querySelector('#navbar');
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show-sidebar');
+            // navbar.style.width = '400px';
+        });
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('show-sidebar')
+        })
+    </script>
 
 </body>
 

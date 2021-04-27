@@ -6,6 +6,7 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 #navbar {
+  position: fixed;
   height: 70px;
   top: 0;
   left: 250px;
@@ -70,5 +71,6 @@
   }
   #navbar {
     left: 0;
+    width: 93vh;
   }
 }
