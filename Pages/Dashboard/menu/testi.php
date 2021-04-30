@@ -1,27 +1,14 @@
 <?php
 session_start();
-require '../../backend/functions.php';
+require '../../../backend/functions.php';
 if (!$_SESSION['login']) {
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
     exit;
 }
 $username = $_SESSION['dataUser']['username'];
 $sql = "SELECT * FROM menu";
 $menus = query($sql);
-$sqlForData = "SELECT * FROM booking";
-$datasBooking = query($sqlForData);
 
-// CEK BANYAKNYA USER
-$user = mysqli_query($koneksi, "SELECT * FROM user");
-$jumlahUser = mysqli_num_rows($user);
-
-// CEK BANYAKNYA INPUTAN UNTUK BOOKING
-$bookingan = mysqli_query($koneksi, $sqlForData);
-$jumlahBookingan = mysqli_num_rows($bookingan);
-
-// CEK BANYAKNYA TESTI
-$comments = mysqli_query($koneksi, "SELECT * FROM testimoni");
-$jmlComment = mysqli_num_rows($comments);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +17,94 @@ $jmlComment = mysqli_num_rows($comments);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../dist/styling/templatesStyle/index.css">
-    <link rel="stylesheet" href="../../dist/styling/utils.css">
+    <link rel="stylesheet" href="../../../dist/styling/utils.css">
+    <link rel="stylesheet" href="../../../dist/styling/templatesStyle/index.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
         body {
             max-width: 1000px;
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.25;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
+        }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        @media screen and (max-width: 600px) {
+            .table{
+                max-width: 400px;
+            }
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
         }
 
         .btn-warning {
@@ -51,39 +120,6 @@ $jmlComment = mysqli_num_rows($comments);
         .btn-danger {
             background-color: #e73a0f;
             border-color: #eb520b;
-        }
-
-        .bg-primary {
-            background-color: #007bff;
-        }
-
-        .bg-success {
-            background-color: #63ed7a;
-        }
-
-        .card {
-            box-shadow: 0 4px 8px rgb(0 0 0 / 3%);
-            background-color: #fff;
-            border-radius: 3px;
-            border: none;
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            margin: 10px;
-            border-radius: 3px;
-            line-height: 94px;
-            text-align: center;
-            float: left;
-            margin-right: 15px;
-        }
-
-        .card-header {
-            padding-bottom: 0;
-            padding-top: 10px;
         }
 
         /* SIDEBAR STYLE */
@@ -137,7 +173,7 @@ $jmlComment = mysqli_num_rows($comments);
         @media only screen and (max-width: 680px) {
             #navbar {
                 left: 0;
-                width: 60vh;
+                width: 61vh;
             }
 
             .title-menu {
@@ -171,10 +207,10 @@ $jmlComment = mysqli_num_rows($comments);
             <ul>
                 <li class="list">
                     <div class="float-right d-flex profile">
-                        <img src="../../dist/img/avatar-default.png" class="rounded-img">
+                        <img src="../../../dist/img/avatar-default.png" class="rounded-img">
                         <div>
                             <h3 class="font-white">Hi <?= $username; ?></h3>
-                            <a href="../logout.php" class="font-black">Logout</a>
+                            <a href="../../logout.php" class="font-black">Logout</a>
                         </div>
                     </div>
                 </li>
@@ -187,67 +223,34 @@ $jmlComment = mysqli_num_rows($comments);
     <!-- SIDE BAR -->
     <aside class="sidebar show-sidebar">
         <ul class="sidebar-menu">
-            <h2 class="text-center title-menu"><a href="./index.php" class="font-black">My Barbershop</a></h2>
+            <h2 class="text-center title-menu"><a href="../index.php" class="font-black">My Barbershop</a></h2>
             <div class="mt-2">
                 <?php foreach ($menus as $menu) : ?>
                     <li class="menu-header"><?= $menu['nama_menu']; ?></li>
-                    <li class="sub-menu"><a href="../Dashboard/<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
+                    <li class="sub-menu"><a href="../<?= $menu['menu_link'] . '.php'; ?>"><i class='<?= $menu['menu_icon']; ?>'></i> <?= $menu['nama_menu']; ?></a></li>
                 <?php endforeach; ?>
             </div>
         </ul>
     </aside>
     <!-- END OF NAVIGATION -->
 
-    <!-- KONTEN -->
     <div class="main-content">
-        <div class="row">
-            <h1 style="font-style: italic;">Hallo <?= $username; ?></h1>
-        </div>
-        <section class="section d-flex mt-2">
-            <div class="row" style="padding: 0px 37px;">
-                <div class="col">
-                    <a href="./menu/dashboard.php" class="font-black">
-                        <div class="card d-flex">
-                            <div class="card-icon bg-primary">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="card-header">
-                                <h3>Total Akun</h3>
-                                <h2><?= $jumlahUser; ?></h2>
-                            </div>
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="title-data">
+                            <h2>Testimoni</h2>
                         </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="./menu/laporan.php" class="font-black">
-                        <div class="card d-flex">
-                            <div class="card-icon bg-success">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="card-header">
-                                <h3>Request Bookingan</h3>
-                                <h2><?= $jumlahBookingan; ?></h2>
-                            </div>
+                        <a href="../aksi/cetakComment.php" class="btn btn-secondary font-black">Cetak</a>
+                        <div class="table">
+                            <?php require './listComment.php'; ?>
                         </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a href="./menu/testi.php" class="font-black">
-                        <div class="card d-flex">
-                            <div class="card-icon bg-success">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="card-header">
-                                <h3>Testimoni</h3>
-                                <h2><?= $jmlComment; ?></h2>
-                            </div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
-    <!-- KONTEN END -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
@@ -264,6 +267,7 @@ $jmlComment = mysqli_num_rows($comments);
             sidebar.classList.remove('show-sidebar')
         })
     </script>
+
 </body>
 
 </html>

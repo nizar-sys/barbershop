@@ -22,6 +22,7 @@ $nama = $_SESSION['dataUser']['username'];
         <label class="logo">Barbershop</label>
         <ul>
             <li><a class="active" href="">Home</a></li>
+            <li><a href="./ulasan.php">Ulasan</a></li>
             <li><a href="../logout.php">Logout</a></li>
         </ul>
     </nav>
