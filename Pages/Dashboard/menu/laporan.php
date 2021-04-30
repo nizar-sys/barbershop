@@ -29,33 +29,90 @@ if (isset($_POST['updateStatus'])) {
     <link rel="stylesheet" href="../../../dist/styling/templatesStyle/index.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
-        .table1 {
-            font-family: sans-serif;
-            color: #444;
+        body {
+            max-width: 1000px;
+            font-family: "Open Sans", sans-serif;
+            line-height: 1.25;
+        }
+
+        table {
+            border: 1px solid #ccc;
             border-collapse: collapse;
-            width: 50%;
-            border: 1px solid #f2f5f7;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            table-layout: fixed;
         }
 
-        .table1 tr th {
-            background: #35A9DB;
-            color: #fff;
-            font-weight: normal;
+        table caption {
+            font-size: 1.5em;
+            margin: .5em 0 .75em;
         }
 
-        .table1,
-        th,
-        td {
-            padding: 8px 20px;
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
             text-align: center;
         }
 
-        .table1 tr:hover {
-            background-color: #f5f5f5;
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
         }
 
-        .table1 tr:nth-child(even) {
-            background-color: #f2f2f2;
+        @media screen and (max-width: 600px) {
+            .table{
+                max-width: 400px;
+            }
+            table {
+                border: 0;
+            }
+
+            table caption {
+                font-size: 1.3em;
+            }
+
+            table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+            }
+
+            table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+            }
+
+            table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+            }
+
+            table td::before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table td:last-child {
+                border-bottom: 0;
+            }
         }
 
         .btn-warning {
@@ -72,6 +129,7 @@ if (isset($_POST['updateStatus'])) {
             background-color: #e73a0f;
             border-color: #eb520b;
         }
+
         /* SIDEBAR STYLE */
         .sidebar {
             position: fixed;
@@ -93,6 +151,7 @@ if (isset($_POST['updateStatus'])) {
         .show-sidebar {
             transform: translate(0);
         }
+
         .menu-header {
             padding: 3px 15px;
             color: #bcc1c6;
@@ -122,20 +181,24 @@ if (isset($_POST['updateStatus'])) {
         @media only screen and (max-width: 680px) {
             #navbar {
                 left: 0;
-                width: 65vh;
+                width: 61vh;
             }
-            .title-menu{
+
+            .title-menu {
                 margin-top: 4rem;
                 color: white;
             }
+
             .main-content {
                 padding-left: 40px;
                 width: 400px;
             }
-            .sidebar{
+
+            .sidebar {
                 background-color: #007bff;
             }
-            .menu-header{
+
+            .menu-header {
                 color: white;
             }
         }
@@ -188,7 +251,9 @@ if (isset($_POST['updateStatus'])) {
                             <h2>Data pembooking</h2>
                         </div>
                         <a href="../aksi/cetak.php" class="btn btn-secondary font-black">Cetak</a>
-                        <?php require './dataBookingan.php'; ?>
+                        <div class="table">
+                            <?php require './dataBookingan.php'; ?>
+                        </div>
                     </div>
                 </div>
             </div>

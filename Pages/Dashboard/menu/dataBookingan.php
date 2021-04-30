@@ -10,24 +10,24 @@ $datasBooking = query("SELECT * FROM booking ORDER BY booking_id DESC LIMIT $awa
 
 
 <table class="table1 mt-1">
-    <tr>
-        <th>No</th>
-        <th>Nama</th>
-        <th>Tanggal</th>
-        <th>Jam</th>
-        <th>Status</th>
-        <th>Aksi</th>
+    <tr style="background-color: skyblue;">
+        <th scope="col">No</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Tanggal</th>
+        <th scope="col">Jam</th>
+        <th scope="col">Status</th>
+        <th scope="col">Aksi</th>
     </tr>
     <?php $i = 1; ?>
     <?php foreach ($datasBooking as $bookingan) : ?>
         <tr>
-            <td><?= $i; ?></td>
-            <td><?= $bookingan['nama_pembooking']; ?></td>
-            <td><?= $bookingan['tanggal_booking']; ?></td>
-            <td><?= $bookingan['jam_booking']; ?></td>
-            <td><?= $bookingan['status']; ?></td>
+            <td data-label="No"><?= $i; ?></td>
+            <td data-label="Nama Pembooking"><?= $bookingan['nama_pembooking']; ?></td>
+            <td data-label="Tgl Booking"><?= $bookingan['tanggal_booking']; ?></td>
+            <td data-label="Jam Booking"><?= $bookingan['jam_booking']; ?></td>
+            <td data-label="Status"><?= $bookingan['status']; ?></td>
             <?php if ($bookingan['status'] == 'belum selesai') : ?>
-                <td class="d-flex">
+                <td class="d-flex" data-label="Aksi">
                     <form action="./laporan.php" method="POST">
                         <input type="hidden" name="id" id="id" value="<?= $bookingan['booking_id']; ?>">
 

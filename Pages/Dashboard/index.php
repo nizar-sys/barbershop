@@ -30,6 +30,10 @@ $jumlahBookingan = mysqli_num_rows($bookingan);
     <link rel="stylesheet" href="../../dist/styling/utils.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
+        body {
+            max-width: 1000px;
+        }
+
         .btn-warning {
             background-color: #e4e70f;
             border-color: #d4eb0b;
@@ -99,6 +103,7 @@ $jumlahBookingan = mysqli_num_rows($bookingan);
         .show-sidebar {
             transform: translate(0);
         }
+
         .menu-header {
             padding: 3px 15px;
             color: #bcc1c6;
@@ -128,24 +133,27 @@ $jumlahBookingan = mysqli_num_rows($bookingan);
         @media only screen and (max-width: 680px) {
             #navbar {
                 left: 0;
-                width: 65vh;
+                width: 66.3vh;
             }
-            .title-menu{
+
+            .title-menu {
                 margin-top: 4rem;
                 color: white;
             }
+
             .main-content {
                 padding-left: 40px;
                 width: 400px;
             }
-            .sidebar{
+
+            .sidebar {
                 background-color: #007bff;
             }
-            .menu-header{
+
+            .menu-header {
                 color: white;
             }
         }
-
     </style>
     <title>My Barbershop <?php if ($username == 'admin') {
                                 echo  '| Admin';

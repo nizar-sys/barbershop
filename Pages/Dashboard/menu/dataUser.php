@@ -7,24 +7,22 @@ $awalData = ($jmlDataPerHalaman * $halAktif) - $jmlDataPerHalaman;
 
 $datasUser = query("SELECT * FROM user ORDER BY uid DESC LIMIT $awalData, $jmlDataPerHalaman");
 ?>
-
-
 <table class="table1 mt-1">
-    <tr>
-        <th>No</th>
-        <th>Fullname</th>
-        <th>Username</th>
-        <th>Role</th>
-        <th>Aksi</th>
+    <tr style="background-color: skyblue;">
+        <th scope="col">No</th>
+        <th scope="col">Fullname</th>
+        <th scope="col">Username</th>
+        <th scope="col">Role</th>
+        <th scope="col">Aksi</th>
     </tr>
     <?php $i = 1; ?>
     <?php foreach ($datasUser as $user) : ?>
         <tr>
-            <td><?= $i; ?></td>
-            <td><?= $user['fullname']; ?></td>
-            <td><?= $user['username']; ?></td>
-            <td><?= $user['role']; ?></td>
-            <td class="d-flex">
+            <td data-label="No"><?= $i; ?></td>
+            <td data-label="Fullname"><?= $user['fullname']; ?></td>
+            <td data-label="Username"><?= $user['username']; ?></td>
+            <td data-label="Role"><?= $user['role']; ?></td>
+            <td class="d-flex" >
                 <a href="../aksi/crud/user.php?id=<?= $user['uid']; ?>" class="btn btn-warning font-black">Edit</a> | <p class="btn btn-danger font-black hapus" id="<?= $user['uid']; ?>">Hapus</p>
             </td>
         </tr>
