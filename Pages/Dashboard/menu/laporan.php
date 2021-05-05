@@ -250,7 +250,7 @@ if (isset($_POST['updateStatus'])) {
                         <div class="title-data">
                             <h2>Data pembooking</h2>
                         </div>
-                        <a href="../aksi/cetak.php" class="btn btn-secondary font-black">Cetak</a>
+                        <a href="../aksi/cetak.php" class="btn btn-secondary font-black">Export</a>
                         <div class="table">
                             <?php require './dataBookingan.php'; ?>
                         </div>
@@ -269,7 +269,6 @@ if (isset($_POST['updateStatus'])) {
         const navbar = document.querySelector('#navbar');
         toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('show-sidebar');
-            // navbar.style.width = '400px';
         });
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('show-sidebar')

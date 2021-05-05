@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "node-sass": "^5.0.0",
+    "sass": "^1.32.12",
     "sweetalert2": "^10.16.6"
   }
 }

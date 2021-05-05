@@ -1,11 +1,11 @@
 <?php
-
+session_start();
+$nama = $_SESSION['dataUser']['fullname'];
 require '../../backend/functions.php';
 if (isset($_POST['sendComment'])) {
-    $name = $_POST['name'];
     $comment = $_POST['comment'];
-
-    $query = mysqli_query($koneksi, "INSERT INTO testimoni VALUES('', '$name', '$comment')");
+    $uid = $_POST['uid'];
+    $query = mysqli_query($koneksi, "INSERT INTO testimoni VALUES('', '$nama', '$comment', '$uid')");
 }
 
 $sqlComment = "SELECT * FROM testimoni";
@@ -98,7 +98,7 @@ $comments = query($sqlComment);
 
     <?php foreach ($comments as $comment) : ?>
         <div class="uwuContainer">
-            <p><span><i class="fas fa-user"></i> <?= $comment['from_user']; ?></span></p>
+            <p><span><i class="fas fa-user"></i><a href="./user.php?id=<?= $comment['id_user'] ?>"><?= $comment['from_user']; ?></a></span></p>
             <br>
             <p><i class="fas fa-comments"></i> <?= $comment['comment']; ?></p>
         </div>
@@ -108,7 +108,10 @@ $comments = query($sqlComment);
     <form method="post" class="mt-5">
         <div class="uwuContainer bg-success">
             <div class="input-group">
-                <input type="text" name="name" id="name" class="form-input" placeholder="Your name..." required>
+                <input type="hidden" name="uid" id="uid" class="form-input" value="<?= $uid ?>">
+            </div>
+            <div class="input-group">
+                <input type="text" name="name" id="name" class="form-input" value="From <?= $nama ?>" disabled>
             </div>
             <div class="input-group">
                 <textarea name="comment" id="comment" placeholder="text..." cols="30" rows="10" class="form-input" required></textarea>

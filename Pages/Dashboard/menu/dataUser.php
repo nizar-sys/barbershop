@@ -22,8 +22,8 @@ $datasUser = query("SELECT * FROM user ORDER BY uid DESC LIMIT $awalData, $jmlDa
             <td data-label="Fullname"><?= $user['fullname']; ?></td>
             <td data-label="Username"><?= $user['username']; ?></td>
             <td data-label="Role"><?= $user['role']; ?></td>
-            <td class="d-flex" >
-                <a href="../aksi/crud/user.php?id=<?= $user['uid']; ?>" class="btn btn-warning font-black">Edit</a> | <p class="btn btn-danger font-black hapus" id="<?= $user['uid']; ?>">Hapus</p>
+            <td class="d-flex">
+                <a  href="../aksi/crud/user.php?id=<?= $user['uid'] ?>" class="btn btn-warning font-black modal-btn edit" id="<?= $user['uid'] ?>">Edit</a> | <p class="btn btn-danger font-black hapus" id="<?= $user['uid']; ?>">Hapus</p>
             </td>
         </tr>
         <?php $i++; ?>
@@ -49,8 +49,6 @@ $datasUser = query("SELECT * FROM user ORDER BY uid DESC LIMIT $awalData, $jmlDa
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
-    // import Swal from 'sweetalert2';
-    // // CommonJS
     $('.hapus').on('click', (e) => {
         let id = e.target.id;
         const swalWithBootstrapButtons = Swal.mixin({

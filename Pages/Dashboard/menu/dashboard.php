@@ -59,9 +59,10 @@ $menus = query($sql);
         }
 
         @media screen and (max-width: 600px) {
-            .table{
+            .table {
                 max-width: 400px;
             }
+
             table {
                 border: 0;
             }
@@ -241,7 +242,7 @@ $menus = query($sql);
                         <div class="title-data">
                             <h2>Data User</h2>
                         </div>
-                        <a href="../aksi/cetakUser.php" class="btn btn-secondary font-black">Cetak</a>
+                        <a href="../aksi/cetakUser.php" class="btn btn-secondary font-black">Export</a>
                         <div class="table">
                             <?php require './dataUser.php'; ?>
                         </div>
@@ -260,7 +261,6 @@ $menus = query($sql);
         const navbar = document.querySelector('#navbar');
         toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('show-sidebar');
-            // navbar.style.width = '400px';
         });
         closeBtn.addEventListener('click', () => {
             sidebar.classList.remove('show-sidebar')

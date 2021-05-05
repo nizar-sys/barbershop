@@ -242,7 +242,7 @@ $menus = query($sql);
                         <div class="title-data">
                             <h2>Testimoni</h2>
                         </div>
-                        <a href="../aksi/cetakComment.php" class="btn btn-secondary font-black">Cetak</a>
+                        <a href="../aksi/cetakComment.php" class="btn btn-secondary font-black">Export</a>
                         <div class="table">
                             <?php require './listComment.php'; ?>
                         </div>

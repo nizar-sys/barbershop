@@ -1,4 +1,7 @@
 <?php session_start();
+if($_SESSION['login'] === false){
+    header('Location: ../../index.php');
+}
 $nama = $_SESSION['dataUser']['username'];
 ?>
 <!DOCTYPE html>
@@ -30,12 +33,18 @@ $nama = $_SESSION['dataUser']['username'];
         <h1 class="konten-title text-center">Hi <?= $nama; ?> Pilih waktu Booking</h1>
         <div class="konten-form">
             <div class="container">
-                <form action="./konfirmasiBooking.php" method="GET">
+                <form action="./konfirmasiBooking.php" method="GET" id="form">
                     <div class="row">
                         <input type="date" class="mt-1 form-input" name="tanggal" id="tanggal" required>
                     </div>
-                    <div class="row">
-                        <input type="text" class="mt-1 form-input" name="jam" id="jam" placeholder="Jam booking" required>
+                    <div class="row" id="form-jam">
+                        <select name="jam" id="jam" style="width: 100%; height: 60px;" required>
+                            <option value="">Pilh Jam Booking</option>
+                            <option value="7:00 - 9:00">7:00 - 9:00</option>
+                            <option value="9:00 - 12:00">9:00 - 12:00</option>
+                            <option value="12:00 - 14:00">12:00 - 14:00</option>
+                            <option value="15:00 - 16:00">15:00 - 16:00</option>
+                        </select>
                     </div>
                     <div class="row btn-book mt-5">
                         <button name="booking" type="submit" class="btn btn-primary">BOOKING</button>

@@ -8,13 +8,15 @@ if (isset($_POST['konfirmasi'])) {
     $nama_pembooking = $_POST['nama'];
     $query = "INSERT INTO booking VALUES('', '$nama_pembooking', '$tanggal', '$jam', DEFAULT)";
 
-    mysqli_query($koneksi, $query);
+
+    $result = mysqli_query($koneksi, $query);
+
 
     if (mysqli_affected_rows($koneksi) === 1) {
-        echo "<div class='container'><p class='flash-msg text-center' style='
-        color: green;
-        border: 1px solid;
-    '>Berhasil di booking!</p></div>";
+        echo "<script>
+                alert('booking success');
+                window.location.href = './index.php';
+            </script>";
     } else {
         echo "<div class='container'><p class='flash-msg text-center' style='
         color: red;
@@ -73,6 +75,7 @@ if (isset($_POST['konfirmasi'])) {
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 
 </html>
